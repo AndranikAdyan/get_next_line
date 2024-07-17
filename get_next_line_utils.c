@@ -6,7 +6,7 @@
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 19:48:05 by andranik          #+#    #+#             */
-/*   Updated: 2024/03/06 17:13:46 by aadyan           ###   ########.fr       */
+/*   Updated: 2024/03/30 13:40:49 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	*ft_join(char *str1, char *str2)
 	int		j;
 	char	*str;
 
-	str = malloc(ft_strlen(str1) + ft_strlen(str2) + 1);
+	str = malloc(sizeof(char) * (ft_strlen(str1) + ft_strlen(str2) + 1));
 	if (!str)
 		return (NULL);
 	i = 0;
@@ -82,22 +82,26 @@ void	read_line(int fd, char **str)
 char	*ft_cutstr(char *str)
 {
 	int		i;
-	int		j;
+	// int		j;
 	char	*s;
 
 	i = 0;
 	if (!str)
 		return (0);
-	while (str && str[i] && str[i] != '\n')
+	while (str[i] && str[i] != '\n')
 		i++;
-	s = malloc(i + 2);
+	s = malloc(sizeof(char) * (i + 2));
 	if (!s)
 		return (0);
-	j = -1;
-	while (++j < i)
-		s[j] = str[j];
+	i = -1;
+	while (str[++i] && str[i] != '\n')
+		s[i] = str[i];
 	if (str[i] == '\n')
-		s[j] = '\n';
-	s[++j] = 0;
+	{
+		s[i] = str[i];
+		i++;
+	}
+	s[i] = '\0';
+	// printf("%s=====\n", s);
 	return (s);
 }

@@ -6,7 +6,7 @@
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 13:04:02 by andranik          #+#    #+#             */
-/*   Updated: 2024/03/06 17:18:19 by aadyan           ###   ########.fr       */
+/*   Updated: 2024/03/30 13:19:45 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ int	main(int argc, char const *argv[])
 
 	(void)argc;
 	(void)argv;
-	fd = open("get_next_line.c", O_RDONLY);
+	fd = open("asdf", O_RDONLY);
 	i = 0;
 	while (i < 30)
 	{
 		str = get_next_line(fd);
-		printf("%s", str);
+		// printf("%s", str);
 		free(str);
 		i++;
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_remainder.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andranik <andranik@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 13:02:27 by andranik          #+#    #+#             */
-/*   Updated: 2024/03/06 16:43:12 by andranik         ###   ########.fr       */
+/*   Updated: 2024/03/30 13:13:23 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*ft_remainder(char *str)
 		i++;
 	if (str[i] == 0)
 		return (free(str), NULL);
-	remainder = malloc(ft_strlen(str) - i);
+	remainder = malloc(sizeof(char) * (ft_strlen(str) - i));
 	if (!remainder)
 		return (NULL);
 	j = -1;

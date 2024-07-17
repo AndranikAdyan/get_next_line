@@ -6,7 +6,7 @@
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 17:19:52 by aadyan            #+#    #+#             */
-/*   Updated: 2024/03/06 17:19:54 by aadyan           ###   ########.fr       */
+/*   Updated: 2024/03/30 13:39:26 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, NULL, 0) < 0)
 		return (0);
-	read_line(fd, &str);
+	str = read_line(fd, str);
 	if (!str)
 		return (0);
 	s = ft_cutstr(str);
