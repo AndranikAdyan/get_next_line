@@ -6,7 +6,7 @@
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 13:13:20 by andranik          #+#    #+#             */
-/*   Updated: 2024/03/30 13:40:54 by aadyan           ###   ########.fr       */
+/*   Updated: 2024/10/20 16:00:35 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 
 char	*get_next_line(int fd);
 char	*ft_strchr(char *str, char sign);
-char	ft_strlen(char *str);
+int		ft_strlen(char *str);
 char	*ft_join(char *str1, char *str2);
 void	read_line(int fd, char **str);
 char	*ft_remainder(char *str);

@@ -6,7 +6,7 @@
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 19:48:05 by andranik          #+#    #+#             */
-/*   Updated: 2024/03/30 13:40:49 by aadyan           ###   ########.fr       */
+/*   Updated: 2024/10/20 16:03:33 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*ft_strchr(char *str, char sign)
 	return (NULL);
 }
 
-char	ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
 	int	i;
 
@@ -82,7 +82,6 @@ void	read_line(int fd, char **str)
 char	*ft_cutstr(char *str)
 {
 	int		i;
-	// int		j;
 	char	*s;
 
 	i = 0;
@@ -102,6 +101,5 @@ char	*ft_cutstr(char *str)
 		i++;
 	}
 	s[i] = '\0';
-	// printf("%s=====\n", s);
 	return (s);
 }
