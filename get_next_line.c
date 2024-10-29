@@ -6,11 +6,34 @@
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 17:19:52 by aadyan            #+#    #+#             */
-/*   Updated: 2024/10/24 16:58:37 by aadyan           ###   ########.fr       */
+/*   Updated: 2024/10/29 16:09:03 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+void	read_line(int fd, char **str)
+{
+	char	*buf;
+	int		bytes;
+
+	buf = malloc(BUFFER_SIZE + 1);
+	if (!buf)
+		return ;
+	while (1)
+	{
+		bytes = read(fd, buf, BUFFER_SIZE);
+		if (bytes == -1)
+			break ;
+		buf[bytes] = 0;
+		if (bytes == 0)
+			break ;
+		*str = ft_join(*str, buf);
+		if (ft_strchr(*str, '\n'))
+			break ;
+	}
+	free(buf);
+}
 
 char	*ft_remainder(char *str)
 {
@@ -24,7 +47,10 @@ char	*ft_remainder(char *str)
 	while (str[i] && str[i] != '\n')
 		i++;
 	if (str[i] == 0)
-		return (free(str), NULL);
+	{
+		free(str);
+		return (NULL);
+	}
 	remainder = malloc(sizeof(char) * (ft_strlen(str) - i));
 	if (!remainder)
 		return (NULL);
@@ -41,7 +67,7 @@ char	*get_next_line(int fd)
 	static char	*str;
 	char		*s;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, NULL, 0) < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
 	read_line(fd, &str);
 	if (!str)

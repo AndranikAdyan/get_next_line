@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/26 19:48:05 by andranik          #+#    #+#             */
-/*   Updated: 2024/10/20 16:03:33 by aadyan           ###   ########.fr       */
-/*                                                                            */
+/*																			*/
+/*														:::	  ::::::::   */
+/*   get_next_line_utils.c							  :+:	  :+:	:+:   */
+/*													+:+ +:+		 +:+	 */
+/*   By: aadyan <marvin@42.fr>					  +#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+		   */
+/*   Created: 2024/02/26 19:48:05 by andranik		  #+#	#+#			 */
+/*   Updated: 2024/10/29 14:41:47 by aadyan		   ###   ########.fr	   */
+/*																			*/
 /* ************************************************************************** */
 
 #include "get_next_line.h"
@@ -57,26 +57,6 @@ char	*ft_join(char *str1, char *str2)
 	if (str1)
 		free(str1);
 	return (str);
-}
-
-void	read_line(int fd, char **str)
-{
-	char	buf[BUFFER_SIZE + 1];
-	int		bytes;
-
-	bytes = 0;
-	while (1)
-	{
-		bytes = read(fd, buf, BUFFER_SIZE);
-		if (bytes == -1)
-			break ;
-		buf[bytes] = 0;
-		if (bytes == 0)
-			break ;
-		*str = ft_join(*str, buf);
-		if (ft_strchr(*str, '\n'))
-			break ;
-	}
 }
 
 char	*ft_cutstr(char *str)
