@@ -6,7 +6,7 @@
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 17:19:52 by aadyan            #+#    #+#             */
-/*   Updated: 2024/10/29 16:14:21 by aadyan           ###   ########.fr       */
+/*   Updated: 2024/10/30 18:52:02 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,20 +64,18 @@ char	*ft_remainder(char *str)
 
 char	*get_next_line(int fd)
 {
-	static char	*str;
+	static char	*str[66000]; // replace to OPEN_MAX
 	char		*s;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
-	read_line(fd, &str);
-	if (!str)
-		return (0);
-	s = ft_cutstr(str);
+	read_line(fd, &str[fd]);
+	s = ft_cutstr(str[fd]);
 	if (s && !*s)
 	{
 		free(s);
 		return (NULL);
 	}
-	str = ft_remainder(str);
+	str[fd] = ft_remainder(str[fd]);
 	return (s);
 }
