@@ -1,0 +1,2 @@
+cf='cc -Wall -Wextra -Werror -g3'
+cfs='cc -Wall -Wextra -Werror -g3 -fsanitize=address'
