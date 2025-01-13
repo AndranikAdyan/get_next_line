@@ -6,7 +6,7 @@
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 17:19:52 by aadyan            #+#    #+#             */
-/*   Updated: 2024/10/30 18:52:02 by aadyan           ###   ########.fr       */
+/*   Updated: 2025/01/13 21:02:37 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,10 @@ char	*ft_remainder(char *str)
 
 char	*get_next_line(int fd)
 {
-	static char	*str[66000]; // replace to OPEN_MAX
+	static char	*str[1024];
 	char		*s;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if ((fd != 0 && fd < 2) || BUFFER_SIZE <= 0)
 		return (0);
 	read_line(fd, &str[fd]);
 	s = ft_cutstr(str[fd]);
