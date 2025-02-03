@@ -6,7 +6,7 @@
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 17:19:52 by aadyan            #+#    #+#             */
-/*   Updated: 2025/01/13 21:02:37 by aadyan           ###   ########.fr       */
+/*   Updated: 2025/02/03 11:20:50 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ char	*ft_remainder(char *str)
 
 char	*get_next_line(int fd)
 {
-	static char	*str[1024];
+	static char	*str[1024]; //change to fd_max value
 	char		*s;
 
 	if ((fd != 0 && fd < 2) || BUFFER_SIZE <= 0)
