@@ -20,8 +20,6 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdlib.h>
-# include <string.h>
-# include <stdio.h>
 # include <limits.h>
 
 char	*get_next_line(int fd);

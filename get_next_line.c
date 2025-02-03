@@ -48,34 +48,35 @@ char	*ft_remainder(char *str)
 		i++;
 	if (str[i] == 0)
 	{
+		write(1, "___\n", 4);
 		free(str);
 		return (NULL);
 	}
-	remainder = malloc(sizeof(char) * (ft_strlen(str) - i));
+	remainder = (char *)malloc(sizeof(char) * (ft_strlen(str) - i));
 	if (!remainder)
 		return (NULL);
-	j = -1;
-	while (str[i] && str[++i])
-		remainder[++j] = str[i];
-	remainder[++j] = 0;
+	j = 0;
+	while (str[++i])
+		remainder[j++] = str[i];
+	remainder[j] = 0;
 	free(str);
 	return (remainder);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*str[1024]; //change to fd_max value
+	static char	*str;
 	char		*s;
 
 	if ((fd != 0 && fd < 2) || BUFFER_SIZE <= 0)
 		return (0);
-	read_line(fd, &str[fd]);
-	s = ft_cutstr(str[fd]);
+	read_line(fd, &str);
+	s = ft_cutstr(str);
 	if (s && !*s)
 	{
 		free(s);
 		return (NULL);
 	}
-	str[fd] = ft_remainder(str[fd]);
+	str = ft_remainder(str);
 	return (s);
 }
