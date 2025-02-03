@@ -54,8 +54,7 @@ char	*ft_join(char *str1, char *str2)
 	while (str2 && str2[i])
 		str[j++] = str2[i++];
 	str[j] = '\0';
-	if (str1)
-		free(str1);
+	free(str1);
 	return (str);
 }
 

@@ -24,8 +24,12 @@ void	read_line(int fd, char **str)
 	{
 		bytes = read(fd, buf, BUFFER_SIZE);
 		if (bytes == -1)
+		{
+			free(*str);
+			*str = NULL;
 			break ;
-		buf[bytes] = 0;
+		}
+		buf[bytes] = '\0';
 		if (bytes == 0)
 			break ;
 		*str = ft_join(*str, buf);
@@ -46,7 +50,7 @@ char	*ft_remainder(char *str)
 	i = 0;
 	while (str[i] && str[i] != '\n')
 		i++;
-	if (str[i] == 0)
+	if (str[i] == '\0')
 	{
 		free(str);
 		return (NULL);
@@ -64,18 +68,21 @@ char	*ft_remainder(char *str)
 
 char	*get_next_line(int fd)
 {
-	static char	*str[1024];
+	static char	*str;
 	char		*s;
 
 	if ((fd != 0 && fd < 2) || BUFFER_SIZE <= 0)
 		return (0);
-	read_line(fd, &str[fd]);
-	s = ft_cutstr(str[fd]);
+	read_line(fd, &str);
+	s = ft_cutstr(str);
 	if (s && !*s)
 	{
 		free(s);
+		free(str);
+		str = NULL;
+		s = NULL;
 		return (NULL);
 	}
-	str[fd] = ft_remainder(str[fd]);
+	str = ft_remainder(str);
 	return (s);
 }
